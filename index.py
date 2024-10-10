@@ -1,16 +1,16 @@
-def create_table(N, M):
-    table = []
-    count = 1
-    for i in range(N):
-        row = []
-        for j in range(M):
-            row.append(count)
-            count += 1
-        table.append(row)
-    return table
+import math
 
-N = 3
-M = 4
-table = create_table(N, M)
-for row in table:
-    print(row)
+def required_terms(epsilon):
+    n = 1
+    pi_approx = 0
+    while True:
+        term = ((-1) ** (n + 1)) * (4 / (2 * n - 1))
+        pi_approx += term
+        if abs(math.pi - pi_approx) < epsilon:
+            break
+        n += 1
+    return n
+
+epsilon = 0.0001
+n = required_terms(epsilon)
+print(n)
